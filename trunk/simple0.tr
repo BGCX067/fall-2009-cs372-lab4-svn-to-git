@@ -1,0 +1,13 @@
+  0 proc_create(100)
+100 create(/fileA)
+100 open(/fileA, O_RDWR) = 3
+100 write(3, 1024) = 0xAA
+100 seek(3, SEEK_SET, 0)
+100 read(3, 1024)
+100 close(3)
+100 open(/fileA, O_RDONLY) = 4
+100 write(4, 1024) = 0xBB
+100 write(4, 4096) = 0x48
+100 close(4)
+100 proc_kill(100)
+  0 proc_kill(0)

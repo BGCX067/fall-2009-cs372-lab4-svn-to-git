@@ -1,0 +1,39 @@
+  0 proc_create(100)
+100 compute(0,100)
+100 create(/file1)
+100 compute(0,100)
+100 open(/file1, O_RDWR) = 3
+100 compute(0,200)
+100 write(3, 19360) = 0x3
+100 close(3)
+100 proc_kill(100)
+  0 proc_create(200)
+200 create(/file2)
+200 compute(0,10)
+200 open(/file2, O_RDWR) = 4
+200 write(4, 11976) = 0x4
+200 close(4)
+200 proc_kill(200)
+  0 proc_create(300)
+300 create(/file3)
+300 open(/file3, O_RDWR) = 5
+300 compute(0,10)
+300 write(5, 19322) = 0x5
+300 close(5)
+300 proc_kill(300)
+  0 proc_create(400)
+400 compute(0,100)
+400 create(/file4)
+400 open(/file4, O_RDWR) = 6
+400 write(6, 3906) = 0x6
+400 close(6)
+400 proc_kill(400)
+  0 proc_create(500)
+500 compute(0,50)
+500 create(/file5)
+500 open(/file5, O_RDWR) = 7
+500 write(7, 13834) = 0x7
+500 close(7)
+500 compute(0,50)
+500 proc_kill(500)
+  0 proc_kill(0)
